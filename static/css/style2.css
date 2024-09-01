@@ -1,3 +1,9 @@
+body {
+    background-color: #f8f9fa;
+}
+h1 {
+    margin-bottom: 30px;
+}
 *{
     margin: 0;
     font-family: "Poppins", sans-serif;
@@ -9,7 +15,7 @@ body{
     background: black;
 }
 .header{
-    position: fixed;
+    position: relative;
     top: 0;
     left:0;
     width: 100%;
@@ -75,13 +81,13 @@ body{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 150px;
     height: 100%;
-    background: transparent;
+    background: #00abf0;
     border: 2px solid #00abf0;
     border-radius: 8px;
     font-size: 19px;
-    color: #00abf0;
+    color: black;
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1px;
@@ -90,17 +96,17 @@ body{
     transition: .5s;
 }
 .btn-box a:hover{
-    color: black;
+    color: #00abf0;
 }
 .btn-box a:nth-child(2):hover{
     color: black    ;
 }
 .btn-box a:nth-child(2)::before{
-    background: transparent;
+    background: #00abf0;
 }
 .btn-box a:nth-child(2){
-    background: #00abf0;
-    color: transparent;
+    background: transparent;
+    color: #00abf0;
 }
 .btn-box a::before{
     content: '';
@@ -109,7 +115,7 @@ body{
     left: 0;
     width: 0;
     height: 100%;
-    background:#00abf0;
+    background: rgb(0, 0, 0);
     z-index: -1;
     transition: .5s;
 }
@@ -118,17 +124,18 @@ body{
 
 }
 #hehe{
+    background-image: url("scene22_6.jpeg");
     background-image: url("blue.gif");
-    background-image: u;
     background-position-y: 100%;
     background-repeat: no-repeat;
     background-repeat: repeat-x;
 }
 #hehe1{
-    background-image: url("blue.gif"),url("cart.png");
+    background-image: url("blue.gif");
     background-position-y: 100%;
     background-repeat: no-repeat;
     background-repeat: repeat-x;
+    background-attachment: fixed;
 }
 #bg{
     background-color: black;
@@ -140,8 +147,8 @@ body{
 }
 .home-sci{
     position: absolute;
-    bottom: 210px;
-    width: 250px;
+    bottom: 180px;
+    width: 300px;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -181,57 +188,6 @@ body{
 
 
 }
-#d{
-  font-weight: 500;
-}
-#b{
-    font-family: "Playwrite CU", cursive;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal
-}
-#c{
-    font-family: "Playwrite CU", cursive;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal
-}
-#a{
-    font-size: larger;
-}
-.logo{
-    font-size: 25px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-.logo:hover{
-    color: #00abf0;
-}
-
-.fa-solid.fa-indian-rupee-sign{
-    font-size: 27px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding-right: 10px;    
-}
-.fa-solid.fa-indian-rupee-sign2{
-    font-size: 27px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding-right: 1px;    
-}
-#cart{
-    background-image: url(" cart.png");
-    position: absolute;
-    box-sizing: border-box;
-}
-#img{
-    height: 500px;
-    width: 500px;
-    margin-bottom: 100px;
-    margin-left: 50%;
-    position: relative;
+.text-center{
+    padding-top: 30px;
 }

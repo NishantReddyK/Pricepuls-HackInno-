@@ -5,8 +5,32 @@ from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+import schedule
+import time
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/home.html')
+def rehome():
+    return render_template('home.html')
+
+@app.route('/contact.html')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/login.html')
+def login():
+    return render_template('login.html')
+
+@app.route('/index.html')
+def track():
+    return render_template('index.html')
+
+
 
 # Configuration
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"}
@@ -90,3 +114,11 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+schedule.every().minute.do(index)
+
+if __name__ == "__main__":
+    print("Tracker OP")
+    while True:
+        schedule.run_pending()
+        time.sleep(1)

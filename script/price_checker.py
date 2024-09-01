@@ -7,6 +7,7 @@ import os
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
+import schedule
 
 # Constants for email notifications
 SMTP_SERVER = "smtp.gmail.com"
@@ -73,6 +74,7 @@ def save_products(products):
     with open(PRODUCTS_FILE, 'w') as file:
         json.dump(products, file, indent=4)
 
+
 def check_prices():
     """Check the prices of all tracked products and send notifications if needed."""
     products = load_products()
@@ -87,14 +89,15 @@ def check_prices():
     
     save_products(products)
 
-# Setup and start the background scheduler
-scheduler = BackgroundScheduler()
-scheduler.add_job(check_prices, 'interval', minutes=1)
-scheduler.start()
+print("MY_EMAIL:", os.getenv("MY_EMAIL"))
+print("MY_EMAIL_PASSWORD:", os.getenv("MY_EMAIL_PASSWORD"))
 
-# Keep the script running
-try:
+
+schedule.every().minute.do(check_prices)
+
+if __name__ == "__main__":
+    print("Tracker OP")
     while True:
+        schedule.run_pending()
         time.sleep(1)
-except (KeyboardInterrupt, SystemExit):
-    scheduler.shutdown()
+
