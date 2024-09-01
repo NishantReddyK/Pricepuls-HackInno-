@@ -17,18 +17,39 @@
             </div>
             <div class="mb-3">
                 <label for="affordable_price" class="form-label">Enter Your Affordable Price:</label>
-                <input type="number" class="form-control" id="affordable_price" name="affordable_price" required>
+                <input type="number" class="form-control" id="affordable_price" name="affordable_price" step="0.01" required>
             </div>
             <button type="submit" class="btn btn-primary">Check Price</button>
         </form>
 
-        {% if price is not none %}
-        <p class="text-center mt-3">Current Price: ₹{{ price }}</p>
-        {% endif %}
+        <!-- Display message if available -->
+        <p class="text-center mt-3">{{ message | default('') }}</p>
 
-        {% if message %}
-        <p class="text-center mt-3">{{ message }}</p>
-        {% endif %}
+        <!-- Table for displaying products -->
+        <h2 class="mt-5">Tracked Products</h2>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">URL</th>
+                    <th scope="col">Affordable Price</th>
+                    <th scope="col">Last Notified Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><a href="{{ product.url }}" target="_blank">{{ product.url }}</a></td>
+                    <td>₹{{ product.affordable_price }}</td>
+                    <td>₹{{ product.last_notified_price | default('N/A') }}</td>
+                </tr>
+                {% endfor %}
+                {% if not products %}
+                <tr>
+                    <td colspan="3" class="text-center">No products to display</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
