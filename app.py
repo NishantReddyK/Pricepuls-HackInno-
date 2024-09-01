@@ -55,7 +55,6 @@ def notify(price, url):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global products
-    message = None
 
     if request.method == 'POST':
         url = request.form['url']
@@ -84,11 +83,10 @@ def index():
                     'affordable_price': affordable_price,
                     'last_notified_price': price if price <= affordable_price else None
                 })
-                message = f"Price is {'affordable' if price <= affordable_price else 'still too high'} at ₹{price}. Notification {'sent' if price <= affordable_price else 'not sent'}!"
-        else:
-            message = "Could not retrieve the price. Please check the URL and try again."
+                
+        
 
-    return render_template('index.html', products=products, message=message)
+    return render_template('index.html', products=products)
 
 if __name__ == '__main__':
     app.run(debug=True)
